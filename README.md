@@ -1,5 +1,7 @@
 # Ixbrl
 
+[![Build Status](https://travis-ci.org/adrianclay/ruby-ixbrl.svg?branch=master)](https://travis-ci.org/adrianclay/ruby-ixbrl)
+
 Limited library of ixbrl related functions.
 
 * ```Ixbrl::DocumentParser.get_items_under_instants``` pulls out xbrl elements from a document keyed by context instant.
