@@ -1,0 +1,5 @@
+require 'ixbrl/version'
+require 'ixbrl/document_parser'
+require 'ixbrl/element_parser'
+require 'ixbrl/companies_house_archive_extractor'
+require 'ixbrl/import_accounts_to_elastic_search'
