@@ -2,6 +2,8 @@ require 'nokogiri'
 
 module Ixbrl
   class DocumentParser
+    attr_reader :element_formatter
+
     NS_XBRL = 'http://www.xbrl.org/2003/instance'
     NS_IXBRL = 'http://www.xbrl.org/2008/inlineXBRL'
 
@@ -24,14 +26,13 @@ module Ixbrl
       end
     end
 
+    private
 
     def get_items_under_context(doc, context)
       items = doc.xpath("//ix:*[@contextRef='" + context['id'] + "']", 'ix' => NS_IXBRL)
-      items.map { |item|
-        [
-            fully_qualify_item_name(item),
-            @element_formatter.parse_element(item)]
-      }.to_h
+      items.map do |item|
+        [fully_qualify_item_name(item), element_formatter.parse_element(item)]
+      end.to_h
     end
 
     def get_instant_from_context(context)
